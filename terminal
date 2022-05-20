@@ -1,0 +1,6 @@
+cd Billed-app-FR-Front
+npm i live-server -D
+npx live-server
+
+cd Billed-app-FR-Back 
+npm run run:dev

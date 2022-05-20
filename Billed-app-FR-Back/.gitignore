@@ -1,0 +1,6 @@
+database_test.sqlite
+node_modules/
+coverage/
+public/
+package-lock.json/
+database_dev.sqlite/
