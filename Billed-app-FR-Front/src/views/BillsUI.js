@@ -25,6 +25,7 @@ const row = (bill) => {
     `)
   }
 
+//TODO: Moification de l'ordre des dates  
 /**
  * Il prend un tableau d'objets, les trie par date, puis renvoie une chaîne de lignes de tableau HTML
  * @param data - les données que nous allons utiliser pour remplir le tableau

@@ -78,6 +78,7 @@ export default class {
     new Logout({ localStorage, onNavigate })
   }
 
+  /* Une fonction qui gère l'événement de clic de l'icône en forme d'œil sur le tableau de bord. */
   handleClickIconEye = () => {
     const billUrl = $('#icon-eye-d').attr("data-bill-url")
     const imgWidth = Math.floor($('#modaleFileAdmin1').width() * 0.8)
@@ -85,43 +86,30 @@ export default class {
     if (typeof $('#modaleFileAdmin1').modal === 'function') $('#modaleFileAdmin1').modal('show')
   }
 
+  //TODO Gestion de l'affichage des dropdown admin
   /**
-   * [handleEditTicket description]
-   *
-   * @param   {event}  e      [e description]
-   * @param   {[type]}  bill   [bill description]
-   * @param   {[type]}  bills  [bills description]
-   *
-   * @return  {[type]}         [return description]
+   * C'est une fonction qui gère l'événement de clic du bouton d'édition sur le tableau de bord
+   * @param e - l'objet événement
+   * @param bill - la facture en cours d'édition
+   * @param bills - un tableau d'objets, chaque objet est une facture
    */
   handleEditTicket(e, bill, bills) {
-    console.log("........\nbills:");
-    console.log("bill", bill);
-    console.log("this.id", this);
-    //if (this.counter === undefined || this.id !== bill.id) this.counter = 0
+    // console.log("........\nbills:");
+    // console.log("bill", bill);
+    // console.log("this.id", this);
     if (this.id === undefined || this.id !== bill.id) this.id = bill.id
-    //if (this.counter % 2 === 0) {
       bills.forEach(b => {
         $(`#open-bill${b.id}`).css({ background: '#0D5AE5' })
       })
       $(`#open-bill${bill.id}`).css({ background: '#2A2B35' })
       $('.dashboard-right-container div').html(DashboardFormUI(bill))
       $('.vertical-navbar').css({ height: '150vh' })
-      //this.counter++
-    /*} else {
-      $(`#open-bill${bill.id}`).css({ background: '#0D5AE5' })
-
-      $('.dashboard-right-container div').html(`
-        <div id="big-billed-icon"> ${BigBilledIcon} </div>
-      `)
-      $('.vertical-navbar').css({ height: '120vh' })
-      this.counter++
-    }*/
     $('#icon-eye-d').click(this.handleClickIconEye)
     $('#btn-accept-bill').click((e) => this.handleAcceptSubmit(e, bill))
     $('#btn-refuse-bill').click((e) => this.handleRefuseSubmit(e, bill))
   }
 
+  /* Une fonction qui gère l'événement de clic sur le bouton d'édition sur le tableau de bord. */
   handleAcceptSubmit = (e, bill) => {
     const newBill = {
       ...bill,
@@ -132,6 +120,7 @@ export default class {
     this.onNavigate(ROUTES_PATH['Dashboard'])
   }
 
+  /* Une fonction qui gère l'événement de clic sur le bouton d'édition du tableau de bord. */
   handleRefuseSubmit = (e, bill) => {
     const newBill = {
       ...bill,
@@ -142,6 +131,14 @@ export default class {
     this.onNavigate(ROUTES_PATH['Dashboard'])
   }
 
+  /**
+   * Il affiche les factures dans un menu déroulant lorsque l'utilisateur clique sur le statut de la
+   * facture
+   * @param e - l'événement
+   * @param bills - la panoplie de factures
+   * @param index - l'index du statut dans le tableau de statut
+   * @returns Les factures sont retournées.
+   */
   handleShowTickets(e, bills, index) {
     this.folded[index] = !this.folded[index];
     console.log( "folded",this.folded);

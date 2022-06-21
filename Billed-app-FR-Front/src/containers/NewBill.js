@@ -49,6 +49,10 @@ export default class NewBill {
     new Logout({ document, localStorage, onNavigate })
   }
 
+  /* Fonction appelée lorsque l'entrée du fichier est modifiée. Il empêche l'action par défaut du
+  formulaire. Il obtient l'e-mail du localStorage. Il crée un objet avec les données du formulaire.
+  Il appelle la fonction updateBill avec l'objet comme paramètre. Il appelle la fonction onNavigate
+  avec la route Bills en paramètre. */
   handleChangeFile = e => {
     e.preventDefault()
     /* Un tableau d'extensions de fichiers autorisées. */
@@ -68,6 +72,7 @@ export default class NewBill {
     /* Il divise le nom du fichier par le point et renvoie le dernier élément du tableau. */
     const extensionsCheck = file.name.split(".").pop();
 
+    //TODO: validation du format des image selectionné 
     /* Vérifier si l'extension de fichier est autorisée. S'il est autorisé, il définit les variables
     filePath et fileName. S'il n'est pas autorisé, il désactive le bouton et alerte l'utilisateur. */
     if(extensionsAllowed.includes(extensionsCheck)){

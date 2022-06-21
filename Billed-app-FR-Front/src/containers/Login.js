@@ -82,6 +82,7 @@ export default class Login {
       this.password = document.querySelector(`input[data-testid="employee-password-input"]`).value
     }
     
+    //TODO: Midification du query pour validé la saisi et rediriger vers le dashbord l'admin
     /* Cette fonction est appelée lorsque l'utilisateur clique sur le bouton Soumettre. Il récupère les
     données saisies et attribue un jeton jwt dans le stockage local si l'utilisateur est connu des
     données. */
